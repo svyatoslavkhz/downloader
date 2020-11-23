@@ -24,7 +24,7 @@ class Downloader extends Component {
         if (this.state.url && this.state.format){
             try {
                 this.setState({loader:true, data:'',link:false});
-                const result = fetch(`https://video-mp3-download:5000/api/info?URL=${this.state.url}&format=${this.state.format}`);
+                const result = fetch(`https://video-mp3-download.fun/api/info?URL=${this.state.url}&format=${this.state.format}`);
                 const info = await result;
                 const data = await info.json();
                 this.setState ({data})
@@ -50,7 +50,7 @@ class Downloader extends Component {
             this.simulateNetworkRequest().then(()=> {this.setState({link:true, loader:false}); })
         }
         if (this.state.link) {
-            return (<span className="linkToDownload"><a href={`https://video-mp3-download:5000/api/download?URL=${this.state.url}&format=${this.state.format}`}>Скачать</a></span>)
+            return (<span className="linkToDownload"><a href={`https://video-mp3-download.fun/api/download?URL=${this.state.url}&format=${this.state.format}`}>Скачать</a></span>)
        }   
     }
     handleInfo = () => {

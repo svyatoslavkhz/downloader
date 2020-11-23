@@ -15,10 +15,12 @@ app.use(cors());
         })
     }
 
-const PORT = config.get('port') || 5000
+    const PORT = config.get('port') || 5000;
+
     app.listen(PORT, () => {
         console.log(`Server Works !!! At port ${PORT}`);
     });
+
     app.get('/api/info', async (req,res) => {
 
     try{ var URL = req.query.URL;
@@ -38,7 +40,7 @@ const PORT = config.get('port') || 5000
         var URL = req.query.URL;
         let format = req.query.format;
         let INFO = await ytdl.getInfo(URL);
-        let title = encodeURIComponent('DownDown.com - ' + INFO.videoDetails.title);
+        let title = encodeURIComponent('Video-mp3-download.fun - ' + INFO.videoDetails.title);
 
     res.header(`Content-Disposition`, `attachment; filename="${title}.${format}"`);
 
