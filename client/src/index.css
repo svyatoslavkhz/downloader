@@ -1,0 +1,166 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+ul {
+  list-style-type: none;
+}
+nav ul {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+nav li {
+  float: left;
+}
+nav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+nav li a:hover {
+  background-color: #111;
+}
+.content {
+  display: flex;
+  margin: 8rem;
+  justify-content: center;
+}
+.content input {
+  padding: 15px;
+  border-radius: 10px 0 0 10px;
+  width: 260px;
+  font-size: 18px;
+  border: 2px solid #ccc;
+  float: left;
+  height: 22px;
+}
+.extension {
+  float: left;
+}
+.content select {
+    font-size: 25px;
+    border-radius: 0px;
+    width: 100px;
+    -webkit-appearance: none;
+    cursor: pointer;
+    text-align: center;
+    border-width: 2px 2px 2px 0;
+    border-style: solid;
+    border-color: #ccc;
+    padding: 7px 0 12px 0px;
+    background: url(menu.png) 95% 95% no-repeat;
+    height: 56px;
+}
+.saveButton {
+	background:linear-gradient(to bottom, #44c767 5%, #339100 100%);
+	background-color:#44c767;
+	border-radius:0 10px 10px 0;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding:14px 25px 13px 25px;
+	text-decoration:none;
+  text-shadow:0px 1px 0px #2f6627;
+  border-left: 0;
+  border-top: 2px solid #ccc;
+  border-color: #ccc;
+  height: 55px;
+}
+.saveButton:hover {
+	background:linear-gradient(to bottom, #339100 5%, #44c767 100%);
+	background-color:#339100;
+}
+.saveButton:active {
+	position:relative;
+	top:1px;
+}
+.saveButton:disabled,button[disabled] {
+  background: #44c767;
+}
+.info {
+  margin-top: 20px;
+}
+.infoRules {
+  font-size: 12px;
+  display: block;
+  margin: 6px 0px;
+  float: left;
+}
+.infoImg {
+  float: left;
+  margin-right: 15px;
+}
+.infoTitle {
+  display: flex;
+  font-weight: bold;
+}
+.infoAuthor {
+  display: flex;
+  padding: 10px 0px;
+}
+.linkToDownload a {
+  font-size: 20px;
+  font-weight: bold;
+}
+.description {
+  display: block;
+  justify-content: center;
+  padding: 3rem;
+  background-color: #fff8ee;;
+}
+.description .text, .description .question {
+  width: 60%;
+  margin: 0 auto;
+}
+.question ul {
+  padding: 0;
+}
+.footer {
+  background-color: #333;
+  padding: 3rem;
+  color: #fff;
+  font-size: 20px;
+}
+@media screen and (max-width:800px){
+  .content {
+    margin: 6rem;
+  }
+  .content input {
+    width: 100%;
+    border-radius: 5px;
+  }
+  .content select {
+    border-radius: 5px;
+    border-width: 0px 0px 2px 2px;
+  }
+  .extension {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    margin-bottom: 20px;
+  }
+  .saveButton {
+    border-top: 0px solid #ccc;
+  }
+  .description {
+    padding: 1rem;
+  }
+  .description .text, .description .question {
+    width: 80%;
+  }
+}
