@@ -5,6 +5,8 @@ const ytdl = require('ytdl-core');
 const app = express();
 const path = require('path');
 app.use(cors());
+var https = require( "https" );
+const fs = require( "fs" );
     
 
     app.get('/api/info', async (req,res) => {
@@ -53,3 +55,10 @@ app.use(cors());
     app.listen(PORT, () => {
         console.log(`Server Works !!! At port ${PORT}`);
     });
+
+    const httpsOptions = {
+        key: fs.readFileSync("private.key"), // путь к ключу
+        cert: fs.readFileSync("certificate.crt") // путь к сертификату
+    }
+
+    https.createServer(httpsOptions, app).listen(443);
