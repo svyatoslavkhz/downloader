@@ -46,6 +46,9 @@ nav li a:hover {
   float: left;
   height: 22px;
 }
+.downloader {
+  max-width: 600px;
+}
 .extension {
   float: left;
 }
