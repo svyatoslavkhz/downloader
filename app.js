@@ -7,8 +7,11 @@ const path = require('path');
 app.use(cors());
 var https = require( "https" );
 const fs = require( "fs" );
-    
+const helmet = require('helmet');
 
+
+    app.use(helmet());
+    
     app.get('/api/info', async (req,res) => {
 
         try{ var URL = req.query.URL;

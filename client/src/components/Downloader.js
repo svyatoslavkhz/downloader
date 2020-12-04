@@ -29,7 +29,9 @@ class Downloader extends Component {
                 const data = await info.json();
                 this.setState ({data})
                 }
-            catch (e) {}
+            catch (e) {
+                this.setState({loader:false})
+            }
         }
     }
     loader = () =>{
