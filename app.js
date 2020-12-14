@@ -7,23 +7,7 @@ const path = require('path');
 app.use(cors());
 var https = require( "https" );
 const fs = require( "fs" );
-// const helmet = require('helmet');
 
-//     app.use(helmet.contentSecurityPolicy({
-//         directives: {
-//             ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-//             "default-src": ["'self'"],
-//             "script-src": ["'self'", "'unself-inline'", "*.yandex.ru", "*.google-analytics.com"],
-//             "object-src": ["'none'"],
-//           },
-//         reportOnly: true,
-//     }))
-//     app.use(
-//         helmet.hsts({
-//           maxAge: 63072000,
-//           preload: true,
-//         })
-//       );
     app.get('/api/info', async (req,res) => {
 
         try{ var URL = req.query.URL;
@@ -61,7 +45,7 @@ const fs = require( "fs" );
             if (req.secure) {
                     next();
             } else {
-                    res.redirect('https://' + req.headers.host + req.url);
+                    res.redirect(301,'https://' + req.headers.host + req.url);
             }
         });
 
@@ -80,8 +64,8 @@ const fs = require( "fs" );
     });
 
     const httpsOptions = {
-        key: fs.readFileSync("private.key"), // путь к ключу
-        cert: fs.readFileSync("certificate.crt") // путь к сертификату
+        key: fs.readFileSync("private.key"),
+        cert: fs.readFileSync("certificate.crt")
     }
 
     https.createServer(httpsOptions, app).listen(443);
