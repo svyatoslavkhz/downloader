@@ -8,14 +8,14 @@ import Rules from '../pages/about';
 
 
 export const NavBar = param => {
-
+            //<Redirect to={`/${language}`} />
     return (
         <Router>
             <nav>
               <ul>
-                <li><a href={`/${param.language}`}>{text('link', param.language)}</a></li>
+                <li><Link to={`/${param.language}`}>{text('link', param.language)}</Link></li>
                 <li>
-                    {param.language==='ru' ? <a href="/en">EN</a> : <a href="/ru">RU</a>}
+                   {param.language==='ru' ? <a href="/en">EN</a> : <a href="/ru">RU</a>}
                 </li>
               </ul>
             </nav>
