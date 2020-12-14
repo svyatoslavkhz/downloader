@@ -32,6 +32,9 @@ nav li a {
 nav li a:hover {
   background-color: #111;
 }
+nav li:nth-child(2) {
+  background: #a66200;
+}
 .content {
   display: flex;
   margin: 8rem;
@@ -97,13 +100,12 @@ nav li a:hover {
 }
 .info {
   margin-top: 20px;
-  clear: both;
+  clear:both;
 }
 .infoRules {
   font-size: 12px;
   display: block;
   margin: 6px 0px;
-  float: left;
 }
 .infoImg {
   float: left;
@@ -112,7 +114,6 @@ nav li a:hover {
 .infoTitle {
   display: flex;
   font-weight: bold;
-  max-width: 347px;
 }
 .infoAuthor {
   display: flex;
