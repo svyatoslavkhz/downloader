@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {description} from '../texts/description';
+import {text} from '../texts/all';
 import {Link} from 'react-router-dom';
 import Loader from 'react-loader-spinner';
 
@@ -11,7 +12,8 @@ class Downloader extends Component {
             url:"",
             format:"mp4",
             loader: false,
-            link:false
+            link:false,
+            domain:'https://video-mp3-download.fun'
         };
     }
 
@@ -24,7 +26,7 @@ class Downloader extends Component {
         if (this.state.url && this.state.format){
             try {
                 this.setState({loader:true, data:'',link:false});
-                const result = fetch(`https://video-mp3-download.fun/api/info?URL=${this.state.url}&format=${this.state.format}`);
+                const result = fetch(`${this.state.domain}/api/info?URL=${this.state.url}&format=${this.state.format}`);
                 const info = await result;
                 const data = await info.json();
                 this.setState ({data})
@@ -52,7 +54,7 @@ class Downloader extends Component {
             this.simulateNetworkRequest().then(()=> {this.setState({link:true, loader:false}); })
         }
         if (this.state.link) {
-            return (<span className="linkToDownload"><a href={`https://video-mp3-download.fun/api/download?URL=${this.state.url}&format=${this.state.format}`}>Скачать</a></span>)
+            return (<span className="linkToDownload"><a href={`${this.state.domain}/api/download?URL=${this.state.url}&format=${this.state.format}`}>{text('button', this.props.language)}</a></span>)
        }   
     }
     handleInfo = () => {
@@ -71,9 +73,9 @@ class Downloader extends Component {
     }
 
     render() { 
-        document.title="Скачать видео и MP3 с Youtube Бесплатно - Video-MP3-download.fun";
-        document.getElementsByTagName("meta")[1].content="Скачать видео MP4 и музыку из видео в MP3 формате с Ютуба ✅Бесплатно ✅Быстро";
-
+        const language = this.props.language;
+        document.title=text('title', language);
+        document.getElementsByTagName("meta")[1].content=text('metaTitle', language);
         return (
             <div className="container">
                 <div className="content">
@@ -88,17 +90,17 @@ class Downloader extends Component {
                         onClick={this.handleClick} 
                         className="saveButton"
                         disabled={this.state.loader}>
-                        {this.state.loader ? 'loading....' : 'СКАЧАТЬ'}
+                        {this.state.loader ? 'loading....' : text('button', language)}
                     </button>
                     </div>
                     <div>
-                        <span className="infoRules">Используя наш сервис, вы соглашаетесь с <Link to='/rules'>Правилами Пользования</Link></span>
+                        <span className="infoRules">{text('rules', language)}<Link to='/rules'>{text('linkRules', language)}</Link></span>
                         {this.handleInfo()}
                         {this.loader()}
                     </div>
                     </div>
                 </div>
-                {description()}
+                {description(language)}
             </div>
          );
     }

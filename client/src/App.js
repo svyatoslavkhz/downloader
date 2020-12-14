@@ -9,7 +9,9 @@ function App() {
 
   return (
       <div>
-        <NavBar />
+        <NavBar 
+          language={window.location.pathname.slice(1,3)}
+        />
         <Footer />
       </div>
   );
