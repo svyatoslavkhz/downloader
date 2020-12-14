@@ -20,7 +20,6 @@ class Main extends Component {
             return <Redirect to="/ru" />
         }
 
-
         return ( 
             <div>Main page</div>
             );

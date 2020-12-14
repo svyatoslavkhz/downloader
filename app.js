@@ -7,8 +7,23 @@ const path = require('path');
 app.use(cors());
 var https = require( "https" );
 const fs = require( "fs" );
-    
+// const helmet = require('helmet');
 
+//     app.use(helmet.contentSecurityPolicy({
+//         directives: {
+//             ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+//             "default-src": ["'self'"],
+//             "script-src": ["'self'", "'unself-inline'", "*.yandex.ru", "*.google-analytics.com"],
+//             "object-src": ["'none'"],
+//           },
+//         reportOnly: true,
+//     }))
+//     app.use(
+//         helmet.hsts({
+//           maxAge: 63072000,
+//           preload: true,
+//         })
+//       );
     app.get('/api/info', async (req,res) => {
 
         try{ var URL = req.query.URL;
@@ -39,6 +54,14 @@ const fs = require( "fs" );
             }
             catch (e) {
                 res.status(500).send('Что-то пошло не так')
+            }
+        });
+
+        app.use (function (req, res, next) {
+            if (req.secure) {
+                    next();
+            } else {
+                    res.redirect('https://' + req.headers.host + req.url);
             }
         });
 
