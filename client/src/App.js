@@ -6,11 +6,11 @@ import {Footer} from './components/Footer';
 
 
 function App() {
-
+  const lang = window.location.pathname.slice(1,3) ? window.location.pathname.slice(1,3) : 'ru'
   return (
       <div>
         <NavBar 
-          language={window.location.pathname.slice(1,3)}
+          language={lang}
         />
         <Footer />
       </div>
