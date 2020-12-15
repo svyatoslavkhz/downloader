@@ -10,19 +10,16 @@ class Main extends Component {
     }
     render() {
         document.title = "Скачать видео и MP3 с Ютуба Бесплатно - Video-MP3-download.fun"
-        var language = window.navigator ? (window.navigator.language ||
-            window.navigator.systemLanguage ||
-            window.navigator.userLanguage) : "ru";
-        language = language.substr(0, 2).toLowerCase();
+        // var language = window.navigator ? (window.navigator.language ||
+        //     window.navigator.systemLanguage ||
+        //     window.navigator.userLanguage) : "ru";
+        // language = language.substr(0, 2).toLowerCase();
 
-        if (language) {
-            //<Redirect to={`/${language}`} />
-            return <Redirect to="/ru" />
-        }
+        // if (language) {
+        //     <Redirect to={`/${language}`} />
+        // }
 
-        return ( 
-            <div>Main page</div>
-            );
+        return <Redirect to="/ru" />
     }
 }
  
