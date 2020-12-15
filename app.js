@@ -41,6 +41,7 @@ const fs = require( "fs" );
             }
         });
 
+    if (process.env.NODE_ENV==='production'){
         app.use (function (req, res, next) {
             if (req.secure) {
                     next();
@@ -48,8 +49,6 @@ const fs = require( "fs" );
                     res.redirect(301,'https://' + req.headers.host + req.url);
             }
         });
-
-    if (process.env.NODE_ENV==='production'){
         app.use('/', express.static(path.join(__dirname, 'client', 'build')));
 
         app.get('*', (req, res) => {
