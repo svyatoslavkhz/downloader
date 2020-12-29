@@ -54,6 +54,12 @@ const fs = require( "fs" );
         app.get('*', (req, res) => {
             res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
         })
+        const httpsOptions = {
+            key: fs.readFileSync("private.key"),
+            cert: fs.readFileSync("certificate.crt")
+        }
+    
+        https.createServer(httpsOptions, app).listen(443);
     }
 
     const PORT = config.get('port') || 5000;
@@ -61,10 +67,3 @@ const fs = require( "fs" );
     app.listen(PORT, () => {
         console.log(`Server Works !!! At port ${PORT}`);
     });
-
-    const httpsOptions = {
-        key: fs.readFileSync("private.key"),
-        cert: fs.readFileSync("certificate.crt")
-    }
-
-    https.createServer(httpsOptions, app).listen(443);
